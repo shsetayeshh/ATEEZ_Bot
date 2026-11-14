@@ -147,7 +147,6 @@ def handle_message(message):
         )
 
     elif text:
-        # ذخیره متن ترجمه برای ادامه فرایند
         pending_media[chat_id] = {
             "type": "text",
             "text": text
@@ -206,7 +205,6 @@ def handle_callback(callback_query):
        
         hashtag = pending["hashtag"]
 
-        # ساخت قالب نهایی
         if member == "none":
             template = (
                 f"⤞{hashtag}\n"
@@ -220,7 +218,6 @@ def handle_callback(callback_query):
 
         media_type = pending["type"]
 
-        # حالت متن
         if media_type == "text":
             original_text = pending["text"]
 
@@ -240,7 +237,6 @@ def handle_callback(callback_query):
                 timeout=30
             )
 
-        # حالت عکس و ویدئو
         else:
             original_caption = pending.get("caption", "")
 
